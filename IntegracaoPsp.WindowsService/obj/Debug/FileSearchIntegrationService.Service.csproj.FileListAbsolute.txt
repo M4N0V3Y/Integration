@@ -1,0 +1,14 @@
+C:\Deploy\FileSearchIntegration\Debug\FileSearchIntegrationService.Service.exe.config
+C:\Deploy\FileSearchIntegration\Debug\FileSearchIntegrationService.Service.exe.manifest
+C:\Deploy\FileSearchIntegration\Debug\FileSearchIntegrationService.Service.application
+C:\Deploy\FileSearchIntegration\Debug\FileSearchIntegrationService.Service.exe
+C:\Deploy\FileSearchIntegration\Debug\FileSearchIntegrationService.Service.pdb
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.csprojAssemblyReference.cache
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.ProjectInstaller.resources
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.csproj.GenerateResource.cache
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.csproj.CoreCompileInputs.cache
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.exe.manifest
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.application
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.csproj.CopyComplete
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.exe
+C:\LinkCon\IntegracaoPsP\IntegracaoPsp.WindowsService\obj\Debug\FileSearchIntegrationService.Service.pdb

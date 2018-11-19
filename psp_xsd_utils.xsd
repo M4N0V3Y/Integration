@@ -1,0 +1,1461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <!--
+   ESPECIFICAÇÃO DE TIPOS E ENUMERAÇÕES (DOMÍNIOS), UTILIZADOS NOS ARQUIVOS ENVIADO PELO CONCENTRADOR DE DADOS PORTUÁRIOS
+  -->
+
+  <!-- Início da definição de tipos -->
+  <!-- Início da definição de tipos -->
+
+ <!-- tipo que aceita inteiros e null (em branco) -->
+  <xsd:simpleType name="psp_integer">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([\-|\+]?[0-9 A-Z/]+)*"/>
+      <xsd:minLength value="0"/>
+      <xsd:maxLength value="10"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- tipo que aceita inteiros e null (em branco) -->
+  <xsd:simpleType name="psp_long">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([\-|\+]?[0-9]+)*"/>
+      <xsd:minLength value="0"/>
+      <xsd:maxLength value="18"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- tipo que aceita decimais e null (em branco) -->
+  <xsd:simpleType name="psp_decimal">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([\-|\+]?([0-9]+[.])?[0-9]+)?"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- tipo que aceita decimais e null (em branco) -->
+  <xsd:simpleType name="psp_double">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([\-|\+]?([0-9]+[.])?[0-9]+)?"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- tipo que aceita boolean e null (em branco) -->
+  <xsd:simpleType name="psp_boolean">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="true|false|1|0|"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- Fim da definição de tipos específicos do PSP -->
+
+
+
+  <!-- Início da definição de enumerações (domínios) -->
+
+  <!-- Enumeração dos códigos para o tipo “sexoEnum” -->
+  <xsd:simpleType name="sexoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="F" />
+      <!-- Feminino -->
+      <xsd:enumeration value="M" />
+      <!-- Masculino -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “estadoAnuenciaEnum" -->
+  <xsd:simpleType name="estadoAnuenciaEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="D" />
+      <!-- Default (fornecida automaticamente) -->
+      <xsd:enumeration value="A" />
+      <!-- Em Análise -->
+      <xsd:enumeration value="F" />
+      <!-- Fornecida -->
+      <xsd:enumeration value="N" />
+      <!-- Negada -->
+      <xsd:enumeration value="E" />
+      <!-- Com Exigência(s) -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “estadoAutorizacaoArribadaEnum” -->
+  <xsd:simpleType name="estadoAutorizacaoArribadaEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="EM_ANALISE" />
+      <!-- Autorização da arribada em análise -->
+      <xsd:enumeration value="AUTORIZADA" />
+      <!-- Arribada autorizada -->
+      <xsd:enumeration value="NAO_AUTORIZADA"/>
+      <!-- Arribada não autorizada -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos tipos de faturamento associados aos operadores -->
+  <xsd:simpleType name="tipoFaturamentoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Tabela I" />
+      <xsd:enumeration value="Tabela II" />
+      <xsd:enumeration value="Tabela III" />
+      <xsd:enumeration value="Tabela VI" />
+      <xsd:enumeration value="Tabela I 1.1" />
+      <xsd:enumeration value="Tabela I 1.2" />
+      <xsd:enumeration value="Tabela II 2.1" />
+      <xsd:enumeration value="Tabela IV" />
+      <xsd:enumeration value="Tabela V" />
+      <xsd:enumeration value="Tabela VII" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração para o nível de proteção da embarcação -->
+  <xsd:simpleType name="nivelProtecaoNavioEnum">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="1" />
+      <!-- 1175 -->
+      <xsd:enumeration value="2" />
+      <!-- 1176 -->
+      <xsd:enumeration value="3" />
+      <!-- 1177 -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “periodoTrabalhoEnum” -->
+  <xsd:simpleType name="periodoTrabalhoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="MANHA" />
+      <!-- Período de trabalho da manhã -->
+      <xsd:enumeration value="TARDE" />
+      <!-- Período de trabalho da tarde -->
+      <xsd:enumeration value="NOITE" />
+      <!-- Período de trabalho da noite -->
+      <xsd:enumeration value="MADRUGADA"/>
+      <!-- Período de trabalho da madrugada -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoCargaBoletimEnum” -->
+  <xsd:simpleType name="tipoCargaBoletimEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CONVENCIONAL" />
+      <!-- Convencional -->
+      <xsd:enumeration value="RORO" />
+      <!-- Ro-Ro -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoMovimentacaoEnum” -->
+  <xsd:simpleType name="tipoMovimentacaoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="GRANEL" />
+      <!-- Movimentação Granel -->
+      <xsd:enumeration value="CONTEINER"/>
+      <!-- Movimentação de Contêiner -->
+      <xsd:enumeration value="CARGA_SOLTA"/>
+      <!-- Movimentação de Carga Solta -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração para os códigos de tipo de granel -->
+  <xsd:simpleType name="tipoGranel">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="01" />
+      <!-- SÓLIDOS - MINÉRIOS -->
+      <xsd:enumeration value="02" />
+      <!-- SÓLIDOS - GRÃOS -->
+      <xsd:enumeration value="03" />
+      <!-- SÓLIDOS - FARELOS -->
+      <xsd:enumeration value="04" />
+      <!-- SÓLIDOS - OUTROS -->
+      <xsd:enumeration value="05" />
+      <!-- LÍQUIDOS - COMBUSTÍVEIS -->
+      <xsd:enumeration value="06" />
+      <!-- LÍQUIDOS - OUTROS -->
+      <xsd:enumeration value="07" />
+      <!-- GASOSOS -->
+      <xsd:enumeration value="99" />
+      <!-- OUTROS -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoOperacaoMovimentacaoEnum” -->
+  <xsd:simpleType name="tipoOperacaoMovimentacaoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="DESCARGA" />
+      <xsd:enumeration value="EMBARQUE" />
+      <xsd:enumeration value="EMBARQUE_DESCARGA"/>
+      <xsd:enumeration value="REMOCAO_ABORDO" />
+      <xsd:enumeration value="REMOCAO_POR_TERRA" />
+      <xsd:enumeration value="EMBARQUE_TRANSBORDO"/>
+      <xsd:enumeration value="TRANSBORDO_BORDO"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoAvariaEnum” -->
+  <xsd:simpleType name="tipoAvariaEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NAO" />
+      <!-- Não houve avaria -->
+      <xsd:enumeration value="SIM" />
+      <!-- Houve avaria -->
+      <xsd:enumeration value="FALTA_LACRE"/>
+      <!-- Falta o lacre -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “situacaoConteinerMovimentadoEnum” -->
+  <xsd:simpleType name="situacaoConteinerMovimentadoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CHEIO"/>
+      <!-- Contêiner cheio -->
+      <xsd:enumeration value="VAZIO"/>
+      <!-- Contêiner vazio -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração para o tipo de registro das notas fiscais -->
+  <xsd:simpleType name="tipoRegistroNotaFiscal">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="N1" />
+      <xsd:enumeration value="N3" />
+      <xsd:enumeration value="N7" />
+      <xsd:enumeration value="NB" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração das unidades de media para os resíduos da embarcação -->
+  <xsd:simpleType name="unidadeResiduoEnum">
+    <xsd:restriction base="xsd:long">
+      <xsd:enumeration value="1145" />
+      <!-- Quilograma -->
+      <xsd:enumeration value="1146" />
+      <!-- Garrafa -->
+      <xsd:enumeration value="1147" />
+      <!-- Pacote -->
+      <xsd:enumeration value="1148" />
+      <!-- Dúzia -->
+      <xsd:enumeration value="1149" />
+      <!-- Litro -->
+      <xsd:enumeration value="1150" />
+      <!-- Metro Cúbico -->
+      <xsd:enumeration value="1151" />
+      <!-- Unidade -->
+      <xsd:enumeration value="1152" />
+      <!-- Outra -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos tipos de resíduo da embarcação -->
+  <xsd:simpleType name="tipoResiduoEnum">
+    <xsd:restriction base="xsd:long">
+      <xsd:enumeration value="1137" />
+      <!-- Ambulatoriais -->
+      <xsd:enumeration value="1138" />
+      <!-- Plástico -->
+      <xsd:enumeration value="1139" />
+      <!-- Papel -->
+      <xsd:enumeration value="1140" />
+      <!-- Vidro -->
+      <xsd:enumeration value="1141" />
+      <!-- Metal -->
+      <xsd:enumeration value="1142" />
+      <!-- Orgânico -->
+      <xsd:enumeration value="1143" />
+      <!-- Oleosos Borra -->
+      <xsd:enumeration value="1144" />
+      <!-- Oleosos Estopas -->
+      <xsd:enumeration value="1196" />
+      <!-- Outros -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoViagemEnum” -->
+  <xsd:simpleType name="tipoViagemEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1" />
+      <!-- EXPORTAÇÃO/CABOTAGEM -->
+      <xsd:enumeration value="2" />
+      <!-- EXPORTAÇÃO/LONGO CURSO -->
+      <xsd:enumeration value="3" />
+      <!-- IMPORT/EXPORT/CABOTAGEM -->
+      <xsd:enumeration value="4" />
+      <!-- IMPORT/EXPORT/LONGO CURSO -->
+      <xsd:enumeration value="5" />
+      <!-- IMPORTAÇÃO/CABOTAGEM -->
+      <xsd:enumeration value="6" />
+      <!-- IMPORTAÇÃO/LONGO CURSO -->
+      <xsd:enumeration value="7" />
+      <!-- IMPORTAÇÃO MERCOSUL -->
+      <xsd:enumeration value="8" />
+      <!-- EXPORTAÇÃO MERCOSUL -->
+      <xsd:enumeration value="9" />
+      <!-- IMPORT/EXPORT/MERCOSUL -->
+      <xsd:enumeration value="10"/>
+      <!-- IMP.LONGO CURSO/EXP.MERCOSUL -->
+      <xsd:enumeration value="11"/>
+      <!-- IMP.LONGO CURSO/EXP.CABOTAGEM -->
+      <xsd:enumeration value="12"/>
+      <!-- IMP.MERCOSUL/EXP.LONGO CURSO -->
+      <xsd:enumeration value="13"/>
+      <!-- IMP.MERCOSUL/CABOTAGEM -->
+      <xsd:enumeration value="14"/>
+      <!-- IMP.CABOTAGEM/EXP.LONGO CURSO -->
+      <xsd:enumeration value="15"/>
+      <!-- IMP.CABOTAGEM/EXP.MERCOSUL -->
+      <xsd:enumeration value="16"/>
+      <!-- INTERIOR -->
+      <xsd:enumeration value="17"/>
+      <!-- APOIO MARÍTIMO -->
+      <xsd:enumeration value="18"/>
+      <!-- APOIO PORTUÁRIO -->
+      <xsd:enumeration value="19"/>
+      <!-- PASSAGEIRO -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoRegistroConteinerEnum” -->
+  <xsd:simpleType name="tipoRegistroConteinerEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="V1"/>
+      <!-- INTERIOR (I) -->
+      <xsd:enumeration value="V2"/>
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (I) -->
+      <xsd:enumeration value="V3"/>
+      <!-- CABOTAGEM (I) -->
+      <xsd:enumeration value="V4"/>
+      <!-- BALDEAÇÃO CARGA NACIONAL (A) -->
+      <xsd:enumeration value="V5"/>
+      <!-- LONGO CURSO IMPORTAÇÃO (I) -->
+      <xsd:enumeration value="V6"/>
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (A) -->
+      <xsd:enumeration value="V7"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (I) -->
+      <xsd:enumeration value="V9"/>
+      <!-- PASSAGEM (I) -->
+      <xsd:enumeration value="VB"/>
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (I) -->
+      <xsd:enumeration value="VG"/>
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (I) -->
+      <xsd:enumeration value="VE"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (A) -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoRegistroConhecimentoEmbarqueEnum” -->
+  <xsd:simpleType name="tipoRegistroConhecimentoEmbarqueEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C1"/>
+      <!-- INTERIOR (I) -->
+      <xsd:enumeration value="C2"/>
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (I) -->
+      <xsd:enumeration value="C3"/>
+      <!-- CABOTAGEM (I) -->
+      <xsd:enumeration value="C4"/>
+      <!-- BALDEAÇÃO CARGA NACIONAL (A) -->
+      <xsd:enumeration value="C5"/>
+      <!-- LONGO CURSO IMPORTAÇÃO (I) -->
+      <xsd:enumeration value="C6"/>
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA(A) -->
+      <xsd:enumeration value="C7"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (I) -->
+      <xsd:enumeration value="C8"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (A) -->
+      <xsd:enumeration value="C9"/>
+      <!-- PASSAGEM (I) -->
+      <xsd:enumeration value="CB"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (I) -->
+      <xsd:enumeration value="CC"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (A) -->
+      <xsd:enumeration value="CD"/>
+      <!-- DESCONSOLIDADO (I) -->
+      <xsd:enumeration value="CE"/>
+      <!-- LONGO CURSO EXPORTAÇÃO (A) -->
+      <xsd:enumeration value="CG"/>
+      <!-- PASSAGEM (I) -->
+      <xsd:enumeration value="CH"/>
+      <!-- PASSAGEM (A) -->
+      <xsd:enumeration value="CP"/>
+      <!-- PROVISÓRIO (I) -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “tipoRegistroManifestoCargaEnum” -->
+  <xsd:simpleType name="tipoRegistroManifestoCargaEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="M1" />
+      <!-- INTERIOR (I) -->
+      <xsd:enumeration value="M2" />
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (I) -->
+      <xsd:enumeration value="M3" />
+      <!-- CABOTAGEM (I) -->
+      <xsd:enumeration value="M4" />
+      <!-- BALDEAÇÃO CARGA NACIONAL (A) -->
+      <xsd:enumeration value="M5" />
+      <!-- LONGO CURSO IMPORTAÇÃO (I) -->
+      <xsd:enumeration value="M6" />
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA(A) -->
+      <xsd:enumeration value="M7" />
+      <!-- LONGO CURSO EXPORTAÇÃO (I) -->
+      <xsd:enumeration value="M9" />
+      <!-- PASSAGEM (I) -->
+      <xsd:enumeration value="MB" />
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA (I) -->
+      <xsd:enumeration value="MD" />
+      <!-- DESCONSOLIDADO (I) -->
+      <xsd:enumeration value="ME" />
+      <!-- LONGO CURSO EXPORTAÇÃO (A) -->
+      <xsd:enumeration value="MG" />
+      <!-- BALDEAÇÃO CARGA ESTRANGEIRA(I) -->
+      <xsd:enumeration value="MP" />
+      <!-- PROVISÓRIO (I) -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “embalagensEnum” -->
+  <xsd:simpleType name="embalagensEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1" />
+      <!-- AMARRADO/ATADO/FEIXE -->
+      <xsd:enumeration value="2" />
+      <!-- BARRICA DE FERRO -->
+      <xsd:enumeration value="3" />
+      <!-- BARRICA DE FIBRA DE VIDRO -->
+      <xsd:enumeration value="4" />
+      <!-- BARRICA DE PAPELAO -->
+      <xsd:enumeration value="5" />
+      <!-- BARRICA DE PLASTICO -->
+      <xsd:enumeration value="6" />
+      <!-- BARRICA DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="7" />
+      <!-- BAU DE MADEIRA -->
+      <xsd:enumeration value="8" />
+      <!-- BAU DE METAL -->
+      <xsd:enumeration value="9" />
+      <!-- BAU DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="10"/>
+      <!-- BIG BAG -->
+      <xsd:enumeration value="11"/>
+      <!-- BLOCO -->
+      <xsd:enumeration value="12"/>
+      <!-- BOBINA -->
+      <xsd:enumeration value="13"/>
+      <!-- BOMBONA -->
+      <xsd:enumeration value="14"/>
+      <!-- BOTIJAO -->
+      <xsd:enumeration value="15"/>
+      <!-- CAIXA CORRUGADA -->
+      <xsd:enumeration value="16"/>
+      <!-- CAIXA DE ISOPOR -->
+      <xsd:enumeration value="17"/>
+      <!-- CAIXA DE MADEIRA -->
+      <xsd:enumeration value="18"/>
+      <!-- CAIXA DE METAL -->
+      <xsd:enumeration value="19"/>
+      <!-- CAIXA DE PAPELAO -->
+      <xsd:enumeration value="20"/>
+      <!-- CAIXA DE PLASTICO -->
+      <xsd:enumeration value="21"/>
+      <!-- CAIXA DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="22"/>
+      <!-- CANUDO -->
+      <xsd:enumeration value="23"/>
+      <!-- CARRETEL -->
+      <xsd:enumeration value="24"/>
+      <!-- CILINDRO -->
+      <xsd:enumeration value="25"/>
+      <!-- CINTADO -->
+      <xsd:enumeration value="26"/>
+      <!-- ENGRADADO DE MADEIRA -->
+      <xsd:enumeration value="27"/>
+      <!-- ENGRADADO DE PLASTICO -->
+      <xsd:enumeration value="28"/>
+      <!-- ENGRADADO DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="29"/>
+      <!-- ENVELOPE -->
+      <xsd:enumeration value="30"/>
+      <!-- ESTOJO -->
+      <xsd:enumeration value="31"/>
+      <!-- ESTRADO -->
+      <xsd:enumeration value="32"/>
+      <!-- FARDO -->
+      <xsd:enumeration value="33"/>
+      <!-- FRASCO -->
+      <xsd:enumeration value="34"/>
+      <!-- GALAO DE METAL -->
+      <xsd:enumeration value="35"/>
+      <!-- GALAO DE PLASTICO -->
+      <xsd:enumeration value="36"/>
+      <!-- GALAO DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="37"/>
+      <!-- GRANEL -->
+      <xsd:enumeration value="38"/>
+      <!-- LATA -->
+      <xsd:enumeration value="39"/>
+      <!-- MALA -->
+      <xsd:enumeration value="40"/>
+      <!-- MALETA -->
+      <xsd:enumeration value="41"/>
+      <!-- PACOTE -->
+      <xsd:enumeration value="42"/>
+      <!-- PECA -->
+      <xsd:enumeration value="43"/>
+      <!-- QUARTOLA -->
+      <xsd:enumeration value="44"/>
+      <!-- ROLO -->
+      <xsd:enumeration value="45"/>
+      <!-- SACA -->
+      <xsd:enumeration value="46"/>
+      <!-- SACO DE ANIAGEM -->
+      <xsd:enumeration value="47"/>
+      <!-- SACO DE COURO -->
+      <xsd:enumeration value="48"/>
+      <!-- SACO DE LONA -->
+      <xsd:enumeration value="49"/>
+      <!-- SACO DE NYLON -->
+      <xsd:enumeration value="50"/>
+      <!-- SACO DE PAPEL -->
+      <xsd:enumeration value="51"/>
+      <!-- SACO DE PAPELAO -->
+      <xsd:enumeration value="52"/>
+      <!-- SACO DE PLASTICO -->
+      <xsd:enumeration value="53"/>
+      <!-- SACO DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="54"/>
+      <!-- SACOLA -->
+      <xsd:enumeration value="55"/>
+      <!-- SAN BAG -->
+      <xsd:enumeration value="56"/>
+      <!-- TAMBOR DE METAL -->
+      <xsd:enumeration value="57"/>
+      <!-- TAMBOR DE PAPELAO -->
+      <xsd:enumeration value="58"/>
+      <!-- TAMBOR DE PLASTICO -->
+      <xsd:enumeration value="59"/>
+      <!-- TAMBOR DE OUTROS MATERIAIS -->
+      <xsd:enumeration value="60"/>
+      <!-- ATADO -->
+      <xsd:enumeration value="61"/>
+      <!-- CONTEINER OU COFRE D -->
+      <xsd:enumeration value="62"/>
+      <!-- DIVERSOS -->
+      <xsd:enumeration value="63"/>
+      <!-- ENGRADADO -->
+      <xsd:enumeration value="64"/>
+      <!-- FEIXE -->
+      <xsd:enumeration value="65"/>
+      <!-- LINGOTE -->
+      <xsd:enumeration value="66"/>
+      <!-- NÃO ESPECIFICADO -->
+      <xsd:enumeration value="67"/>
+      <!-- PALLETS -->
+      <xsd:enumeration value="68"/>
+      <!-- QUARTOLA FIBRA -->
+      <xsd:enumeration value="69"/>
+      <!-- QUARTOLA MADEIRA -->
+      <xsd:enumeration value="70"/>
+      <!-- SEM ACONDICIONAMENTO -->
+      <xsd:enumeration value="71"/>
+      <!-- SACO DE ALGODÃO -->
+      <xsd:enumeration value="72"/>
+      <!-- SACO DE POLIETILENO -->
+      <xsd:enumeration value="73"/>
+      <!-- TAMBOR DE FIBRA -->
+      <xsd:enumeration value="74"/>
+      <!-- VALISE -->
+      <xsd:enumeration value="98"/>
+      <!-- VOLUME -->
+      <xsd:enumeration value="99"/>
+      <!-- OUTROS -->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “moedaEnum” -->
+  <xsd:simpleType name="moedaEnum">
+    <xsd:restriction base="xsd:int">
+      <xsd:enumeration value="5" />
+      <!--AFEGANE/AFEGANIST-->
+      <xsd:enumeration value="9" />
+      <!--BIRR/ETIOPIA-->
+      <xsd:enumeration value="15" />
+      <!--BATH/TAILANDIA-->
+      <xsd:enumeration value="20" />
+      <!--BALBOA/PANAMA-->
+      <xsd:enumeration value="25" />
+      <!--BOLIVAR/VENZUELA-->
+      <xsd:enumeration value="30" />
+      <!--BOLIVIANO/BOLIVIA-->
+      <xsd:enumeration value="35" />
+      <!--CEDI/GANA-->
+      <xsd:enumeration value="40" />
+      <!--COLON/COSTA RICA-->
+      <xsd:enumeration value="45" />
+      <!--COLON/EL SALVADOR-->
+      <xsd:enumeration value="51" />
+      <!--CORDOBA OURO-->
+      <xsd:enumeration value="55" />
+      <!--COROA DINAM/DINAM-->
+      <xsd:enumeration value="57" />
+      <!--COROA/ESTONIA-->
+      <xsd:enumeration value="58" />
+      <!--COROA ESLOVACA-->
+      <xsd:enumeration value="60" />
+      <!--COROA ISLND/ISLAN-->
+      <xsd:enumeration value="65" />
+      <!--COROA NORUE/NORUE-->
+      <xsd:enumeration value="70" />
+      <!--COROA SUECA/SUECI-->
+      <xsd:enumeration value="75" />
+      <!--COROA TCHECA-->
+      <xsd:enumeration value="90" />
+      <!--DALASI/GAMBIA-->
+      <xsd:enumeration value="95" />
+      <!--DINAR ARGELINO-->
+      <xsd:enumeration value="100" />
+      <!--DINAR/KWAIT-->
+      <xsd:enumeration value="105" />
+      <!--DINAR/BAHREIN-->
+      <xsd:enumeration value="115" />
+      <!--DINAR/IRAQUE-->
+      <xsd:enumeration value="125" />
+      <!--DINAR/JORDANIA-->
+      <xsd:enumeration value="130" />
+      <!--DINAR/MACEDONIA-->
+      <xsd:enumeration value="134" />
+      <!--DINAR/SUDAO-->
+      <xsd:enumeration value="135" />
+      <!--DINAR/TUNISIA-->
+      <xsd:enumeration value="138" />
+      <!--DIREITO ESPECIAL-->
+      <xsd:enumeration value="139" />
+      <!--DIRHAM/MARROCOS-->
+      <xsd:enumeration value="145" />
+      <!--DIRHAM/EMIR.ARABE-->
+      <xsd:enumeration value="148" />
+      <!--DOBRA/S.TOME/PRIN-->
+      <xsd:enumeration value="150" />
+      <!--DOLAR AUSTRALIANO-->
+      <xsd:enumeration value="155" />
+      <!--DOLAR/BAHAMAS-->
+      <xsd:enumeration value="160" />
+      <!--DOLAR/BERMUDAS-->
+      <xsd:enumeration value="165" />
+      <!--DOLAR CANADENSE-->
+      <xsd:enumeration value="170" />
+      <!--DOLAR DA GUIANA-->
+      <xsd:enumeration value="175" />
+      <!--DOLAR/BARBADOS-->
+      <xsd:enumeration value="180" />
+      <!--DOLAR/BELIZE-->
+      <xsd:enumeration value="185" />
+      <!--DOLAR/BRUNEI-->
+      <xsd:enumeration value="190" />
+      <!--DOLAR/CAYMAN-->
+      <xsd:enumeration value="195" />
+      <!--DOLAR/CINGAPURA-->
+      <xsd:enumeration value="200" />
+      <!--DOLAR/FIJI-->
+      <xsd:enumeration value="205" />
+      <!--DOLAR/HONG-KONG-->
+      <xsd:enumeration value="210" />
+      <!--DOLAR/TRIN. TOBAG-->
+      <xsd:enumeration value="215" />
+      <!--DOLAR DO CARIBE-->
+      <xsd:enumeration value="217" />
+      <!--DOLAR/ZIMBABUE-->
+      <xsd:enumeration value="220" />
+      <!--DOLAR DOS EUA-->
+      <xsd:enumeration value="230" />
+      <!--DOLAR/JAMAICA-->
+      <xsd:enumeration value="235" />
+      <!--DOLAR/LIBERIA-->
+      <xsd:enumeration value="245" />
+      <!--DOLAR/NOVA ZELAND-->
+      <xsd:enumeration value="250" />
+      <!--DOLAR/IL SALOMAO-->
+      <xsd:enumeration value="260" />
+      <!--DONGUE/VIETNAN-->
+      <xsd:enumeration value="270" />
+      <!--DRACMA/GRECIA-->
+      <xsd:enumeration value="275" />
+      <!--DRAM/ARMENIA REP-->
+      <xsd:enumeration value="295" />
+      <!--ESCUDO/CABO VERDE-->
+      <xsd:enumeration value="315" />
+      <!--ESCUDO PORTUGUES-->
+      <xsd:enumeration value="320" />
+      <!--ESCUDO/TIMOR LEST-->
+      <xsd:enumeration value="325" />
+      <!--FLORIM/ANT. HOLAN-->
+      <xsd:enumeration value="328" />
+      <!--FLORIM/ARUBA-->
+      <xsd:enumeration value="330" />
+      <!--FLORIM/SURINAME-->
+      <xsd:enumeration value="335" />
+      <!--FLORIM HOLANDES-->
+      <xsd:enumeration value="345" />
+      <!--FORINT/HUNGRIA-->
+      <xsd:enumeration value="360" />
+      <!--FRANCO BELGA/BELG-->
+      <xsd:enumeration value="365" />
+      <!--FRANCO/BURUNDI-->
+      <xsd:enumeration value="368" />
+      <!--FRANCO/COMORES-->
+      <xsd:enumeration value="370" />
+      <!--FRANCO/COM.FIN.AF-->
+      <xsd:enumeration value="380" />
+      <!--FRANCO COL FRANC-->
+      <xsd:enumeration value="390" />
+      <!--FRANCO/DJIBUTI-->
+      <xsd:enumeration value="395" />
+      <!--FRANCO FRANCES-->
+      <xsd:enumeration value="398" />
+      <!--FRANCO/GUINE-->
+      <xsd:enumeration value="400" />
+      <!--FRANCO/LUXEMBURGO-->
+      <xsd:enumeration value="405" />
+      <!--FR.MALGAXE/MADAGA-->
+      <xsd:enumeration value="410" />
+      <!--FRANCO MALI-->
+      <xsd:enumeration value="420" />
+      <!--FRANCO/RUANDA-->
+      <xsd:enumeration value="425" />
+      <!--FRANCO SUICO-->
+      <xsd:enumeration value="440" />
+      <!--GOURDE/HAITI-->
+      <xsd:enumeration value="450" />
+      <!--GUARANI/PARAGUAI-->
+      <xsd:enumeration value="460" />
+      <!--HYVNIA/UCRANIA-->
+      <xsd:enumeration value="470" />
+      <!--IENE-->
+      <xsd:enumeration value="482" />
+      <!--LARI/GEORGIA-->
+      <xsd:enumeration value="485" />
+      <!--LAT/LETONIA, REP-->
+      <xsd:enumeration value="490" />
+      <!--LEK/ALBANIA, REP-->
+      <xsd:enumeration value="495" />
+      <!--LEMPIRA/HONDURAS-->
+      <xsd:enumeration value="500" />
+      <!--LEONE/SERRA LEOA-->
+      <xsd:enumeration value="503" />
+      <!--LEU/MOLDAVIA, REP-->
+      <xsd:enumeration value="505" />
+      <!--LEU/ROMENIA-->
+      <xsd:enumeration value="510" />
+      <!--LEV/BULGARIA, REP-->
+      <xsd:enumeration value="520" />
+      <!--LIBRA CIP/CHIPRE-->
+      <xsd:enumeration value="530" />
+      <!--LIBRA/GIBRALTAR-->
+      <xsd:enumeration value="535" />
+      <!--LIBRA/EGITO-->
+      <xsd:enumeration value="540" />
+      <!--LIBRA ESTERLINA-->
+      <xsd:enumeration value="545" />
+      <!--LIBRA/FALKLAND-->
+      <xsd:enumeration value="550" />
+      <!--LIBRA/IRLANDA-->
+      <xsd:enumeration value="560" />
+      <!--LIBRA/LIBANO-->
+      <xsd:enumeration value="565" />
+      <!--LIRA/MALTA-->
+      <xsd:enumeration value="570" />
+      <!--LIBRA/STA HELENA-->
+      <xsd:enumeration value="575" />
+      <!--LIBRA/SIRIA, REP-->
+      <xsd:enumeration value="585" />
+      <!--LILANGENI/SUAZIL-->
+      <xsd:enumeration value="595" />
+      <!--LIRA ITALIANA-->
+      <xsd:enumeration value="600" />
+      <!--LIRA/TURQUIA-->
+      <xsd:enumeration value="601" />
+      <!--LITA/LITUANIA-->
+      <xsd:enumeration value="603" />
+      <!--LOTI/LESOTO-->
+      <xsd:enumeration value="607" />
+      <!--MANAT/ARZEBAIJAO-->
+      <xsd:enumeration value="610" />
+      <!--MARCO ALEMAO-->
+      <xsd:enumeration value="612" />
+      <!--MARCO CONV/BOSNIA-->
+      <xsd:enumeration value="615" />
+      <!--MARCO FINLANDES-->
+      <xsd:enumeration value="620" />
+      <!--METICAL/MOCAMBIQ-->
+      <xsd:enumeration value="630" />
+      <!--NAIRA/NIGERIA-->
+      <xsd:enumeration value="635" />
+      <!--NOVO CUANZA/ANGOL-->
+      <xsd:enumeration value="640" />
+      <!--NOVO DOLAR/TAIWAN-->
+      <xsd:enumeration value="660" />
+      <!--NOVO SOL/PERU-->
+      <xsd:enumeration value="665" />
+      <!--NGULTRUM/BUTAO-->
+      <xsd:enumeration value="670" />
+      <!--UGUIA/MAURITANIA-->
+      <xsd:enumeration value="680" />
+      <!--PAANGA/TONGA-->
+      <xsd:enumeration value="685" />
+      <!--PATACA/MACAU-->
+      <xsd:enumeration value="690" />
+      <!--PESETA/ANDORA-->
+      <xsd:enumeration value="700" />
+      <!--PESETA ESPANHOLA-->
+      <xsd:enumeration value="706" />
+      <!--PESO/ARGENTINA-->
+      <xsd:enumeration value="715" />
+      <!--PESO/CHILE-->
+      <xsd:enumeration value="720" />
+      <!--PESO/COLOMBIA-->
+      <xsd:enumeration value="725" />
+      <!--PESO/CUBA-->
+      <xsd:enumeration value="730" />
+      <!--PESO/REP. DOMINIC-->
+      <xsd:enumeration value="735" />
+      <!--PESO/FILIPINAS-->
+      <xsd:enumeration value="738" />
+      <!--PESO/GUINE BISSAU-->
+      <xsd:enumeration value="741" />
+      <!--PESO/MEXICO-->
+      <xsd:enumeration value="745" />
+      <!--PESO/URUGUAIO-->
+      <xsd:enumeration value="755" />
+      <!--PULA/BOTSWANA-->
+      <xsd:enumeration value="760" />
+      <!--QUACHA/MALAVI-->
+      <xsd:enumeration value="765" />
+      <!--QUACHA/ZAMBIA-->
+      <xsd:enumeration value="770" />
+      <!--QUETZAL/GUATEMALA-->
+      <xsd:enumeration value="775" />
+      <!--QUIATE/BIRMANIA-->
+      <xsd:enumeration value="778" />
+      <!--KINA/PAPUA N GUIN-->
+      <xsd:enumeration value="779" />
+      <!--KUNA/CROACIA-->
+      <xsd:enumeration value="780" />
+      <!--QUIPE/LAOS, REP-->
+      <xsd:enumeration value="785" />
+      <!--RANDE/AFRICA SUL-->
+      <xsd:enumeration value="790" />
+      <!--REAL/BRASIL-->
+      <xsd:enumeration value="795" />
+      <!--IUAN RENMIMBI/CHI-->
+      <xsd:enumeration value="800" />
+      <!--RIAL/CATAR-->
+      <xsd:enumeration value="805" />
+      <!--RIAL/OMA-->
+      <xsd:enumeration value="810" />
+      <!--RIAL/IEMEN-->
+      <xsd:enumeration value="815" />
+      <!--RIAL/IRAN, REP-->
+      <xsd:enumeration value="820" />
+      <!--RIAL/ARAB SAUDITA-->
+      <xsd:enumeration value="825" />
+      <!--RIEL/CAMBOJA-->
+      <xsd:enumeration value="828" />
+      <!--RINGGIT/MALASIA-->
+      <xsd:enumeration value="829" />
+      <!--RUBLO/BELARUS-->
+      <xsd:enumeration value="830" />
+      <!--RUBLO/RUSSIA-->
+      <xsd:enumeration value="835" />
+      <!--RUBLO/TADJIQUISTA-->
+      <xsd:enumeration value="840" />
+      <!--RUPIA/MAURICIO-->
+      <xsd:enumeration value="845" />
+      <!--RUPIA/SEYCHELES S-->
+      <xsd:enumeration value="855" />
+      <!--RUPIA/SRI LANKA-->
+      <xsd:enumeration value="860" />
+      <!--RUPIA/INDIA-->
+      <xsd:enumeration value="865" />
+      <!--RUPIA/INDONESIA-->
+      <xsd:enumeration value="870" />
+      <!--RUFIA/MALDIVAS-->
+      <xsd:enumeration value="875" />
+      <!--RUPIA/PAQUISTAO-->
+      <xsd:enumeration value="880" />
+      <!--SHEKEL/ISRAEL-->
+      <xsd:enumeration value="893" />
+      <!--SOM/UZBEQUISTAO-->
+      <xsd:enumeration value="895" />
+      <!--SUCRE/EQUADOR-->
+      <xsd:enumeration value="905" />
+      <!--TACA/BANGLADESH-->
+      <xsd:enumeration value="911" />
+      <!--TALA/SAMOA OC-->
+      <xsd:enumeration value="913" />
+      <!--TENGE/CASAQISTAO-->
+      <xsd:enumeration value="914" />
+      <!--TOLAR/ESLOVENIA-->
+      <xsd:enumeration value="915" />
+      <!--TUGRIK/MONGOLIA-->
+      <xsd:enumeration value="918" />
+      <!--UNID.MONET.EUROP.-->
+      <xsd:enumeration value="920" />
+      <!--VATU/VANUATU-->
+      <xsd:enumeration value="925" />
+      <!--WON/COREIA NORTE-->
+      <xsd:enumeration value="930" />
+      <!--WON/COREIA SUL-->
+      <xsd:enumeration value="940" />
+      <!--XELIM AUSTRIACO-->
+      <xsd:enumeration value="946" />
+      <!--XELIM DA TANZANIA-->
+      <xsd:enumeration value="950" />
+      <!--XELIM/QUENIA-->
+      <xsd:enumeration value="955" />
+      <!--XELIM/UGANDA-->
+      <xsd:enumeration value="960" />
+      <!--XELIM/SOMALIA-->
+      <xsd:enumeration value="971" />
+      <!--NOVO ZAIRE/ZAIRE-->
+      <xsd:enumeration value="975" />
+      <!--ZLOTY/POLONIA-->
+      <xsd:enumeration value="978" />
+      <!--EURO/COM.EUROPEIA-->
+      <xsd:enumeration value="995" />
+      <!--BUA-->
+      <xsd:enumeration value="996" />
+      <!--FUA-->
+      <xsd:enumeration value="998" />
+      <!--DOLAR OURO-->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <!-- Enumeração dos códigos para o tipo “paisEnum” -->
+  <xsd:simpleType name="paisEnum">
+    <xsd:restriction base="psp_integer">
+      <xsd:enumeration value="" />
+      <!--Vazio para ficha gerada sem o pais somente para mostrar o label-->
+      <xsd:enumeration value="13" />
+      <!--Afeganistão-->
+      <xsd:enumeration value="17" />
+      <!--Albânia-->
+      <xsd:enumeration value="23" />
+      <!--Alemanha-->
+      <xsd:enumeration value="31" />
+      <!--Burkina Faso-->
+      <xsd:enumeration value="37" />
+      <!--Andorra-->
+      <xsd:enumeration value="40" />
+      <!--Angola-->
+      <xsd:enumeration value="41" />
+      <!--Anguilla-->
+      <xsd:enumeration value="43" />
+      <!--Antigua e Barbuda-->
+      <xsd:enumeration value="47" />
+      <!--Antilhas Holandesas-->
+      <xsd:enumeration value="53" />
+      <!--Arábia Saudita-->
+      <xsd:enumeration value="59" />
+      <!--Argélia-->
+      <xsd:enumeration value="63" />
+      <!--Argentina-->
+      <xsd:enumeration value="64" />
+      <!--Armênia-->
+      <xsd:enumeration value="65" />
+      <!--Aruba-->
+      <xsd:enumeration value="69" />
+      <!--Austrália-->
+      <xsd:enumeration value="72" />
+      <!--Áustria-->
+      <xsd:enumeration value="73" />
+      <!--Azerbaijão-->
+      <xsd:enumeration value="77" />
+      <!--Bahamas, Ilhas-->
+      <xsd:enumeration value="80" />
+      <!--Bahrein, Ilhas-->
+      <xsd:enumeration value="81" />
+      <!--Bangladesh-->
+      <xsd:enumeration value="83" />
+      <!--Barbados-->
+      <xsd:enumeration value="85" />
+      <!--Belarus-->
+      <xsd:enumeration value="87" />
+      <!--Bélgica-->
+      <xsd:enumeration value="88" />
+      <!--Belize-->
+      <xsd:enumeration value="90" />
+      <!--Bermudas-->
+      <xsd:enumeration value="93" />
+      <!--Mianmar (Birmânia)-->
+      <xsd:enumeration value="97" />
+      <!--Bolívia-->
+      <xsd:enumeration value="98" />
+      <!--Bósnia-Herzegovina-->
+      <xsd:enumeration value="101" />
+      <!--Botsuana-->
+      <xsd:enumeration value="105" />
+      <!--Brasil-->
+      <xsd:enumeration value="108" />
+      <!--Brunei-->
+      <xsd:enumeration value="111" />
+      <!--Bulgária-->
+      <xsd:enumeration value="115" />
+      <!--Burundi-->
+      <xsd:enumeration value="119" />
+      <!--Butão-->
+      <xsd:enumeration value="127" />
+      <!--Cabo Verde, República de-->
+      <xsd:enumeration value="137" />
+      <!--Cayman, Ilhas-->
+      <xsd:enumeration value="141" />
+      <!--Camboja-->
+      <xsd:enumeration value="145" />
+      <!--Camarões-->
+      <xsd:enumeration value="149" />
+      <!--Canada-->
+      <xsd:enumeration value="150" />
+      <!--Jersey, Ilha do Canal-->
+      <xsd:enumeration value="151" />
+      <!--Canárias, Ilhas-->
+      <xsd:enumeration value="153" />
+      <!--Cazaquistão-->
+      <xsd:enumeration value="154" />
+      <!--Catar-->
+      <xsd:enumeration value="158" />
+      <!--Chile-->
+      <xsd:enumeration value="160" />
+      <!--China-->
+      <xsd:enumeration value="161" />
+      <!--Formosa (Taiwan)-->
+      <xsd:enumeration value="163" />
+      <!--Chipre-->
+      <xsd:enumeration value="165" />
+      <!--Cocos (Keeling), Ilhas-->
+      <xsd:enumeration value="169" />
+      <!--Colômbia-->
+      <xsd:enumeration value="173" />
+      <!--Comores, Ilhas-->
+      <xsd:enumeration value="177" />
+      <!--Congo-->
+      <xsd:enumeration value="183" />
+      <!--Cook, Ilhas-->
+      <xsd:enumeration value="187" />
+      <!--Coréia do Norte-->
+      <xsd:enumeration value="190" />
+      <!--Coréia do Sul-->
+      <xsd:enumeration value="193" />
+      <!--Costa do Marfim-->
+      <xsd:enumeration value="195" />
+      <!--Croácia-->
+      <xsd:enumeration value="196" />
+      <!--Costa Rica-->
+      <xsd:enumeration value="198" />
+      <!--Coveite (Kuwait)-->
+      <xsd:enumeration value="199" />
+      <!--Cuba-->
+      <xsd:enumeration value="229" />
+      <!--Benin-->
+      <xsd:enumeration value="232" />
+      <!--Dinamarca-->
+      <xsd:enumeration value="235" />
+      <!--Dominica, Ilha-->
+      <xsd:enumeration value="239" />
+      <!--Equador-->
+      <xsd:enumeration value="240" />
+      <!--Egito-->
+      <xsd:enumeration value="243" />
+      <!--Eritréia-->
+      <xsd:enumeration value="244" />
+      <!--Emirados Árabes Unidos-->
+      <xsd:enumeration value="245" />
+      <!--Espanha-->
+      <xsd:enumeration value="246" />
+      <!--Eslovênia-->
+      <xsd:enumeration value="247" />
+      <!--Eslovaca, República-->
+      <xsd:enumeration value="249" />
+      <!--Estados Unidos-->
+      <xsd:enumeration value="251" />
+      <!--Estônia-->
+      <xsd:enumeration value="253" />
+      <!--Etiópia-->
+      <xsd:enumeration value="255" />
+      <!--Falkland (Ilhas Malvinas)-->
+      <xsd:enumeration value="259" />
+      <!--Feroe, Ilhas-->
+      <xsd:enumeration value="267" />
+      <!--Filipinas-->
+      <xsd:enumeration value="271" />
+      <!--Finlândia-->
+      <xsd:enumeration value="275" />
+      <!--França-->
+      <xsd:enumeration value="281" />
+      <!--Gabão-->
+      <xsd:enumeration value="285" />
+      <!--Gâmbia-->
+      <xsd:enumeration value="289" />
+      <!--Gana-->
+      <xsd:enumeration value="291" />
+      <!--Geórgia-->
+      <xsd:enumeration value="293" />
+      <!--Gibraltar-->
+      <xsd:enumeration value="297" />
+      <!--Granada-->
+      <xsd:enumeration value="301" />
+      <!--Grécia-->
+      <xsd:enumeration value="305" />
+      <!--Groenlândia-->
+      <xsd:enumeration value="309" />
+      <!--Guadalupe-->
+      <xsd:enumeration value="313" />
+      <!--Guam-->
+      <xsd:enumeration value="317" />
+      <!--Guatemala-->
+      <xsd:enumeration value="325" />
+      <!--Guiana Francesa-->
+      <xsd:enumeration value="329" />
+      <!--Guiné-->
+      <xsd:enumeration value="331" />
+      <!--Guiné-Equatorial-->
+      <xsd:enumeration value="334" />
+      <!--Guiné-Bissau-->
+      <xsd:enumeration value="337" />
+      <!--Guiana-->
+      <xsd:enumeration value="341" />
+      <!--Haiti-->
+      <xsd:enumeration value="345" />
+      <!--Honduras-->
+      <xsd:enumeration value="351" />
+      <!--Hong Kong-->
+      <xsd:enumeration value="355" />
+      <!--Hungria-->
+      <xsd:enumeration value="357" />
+      <!--Iêmen-->
+      <xsd:enumeration value="359" />
+      <!--Man, Ilha de-->
+      <xsd:enumeration value="361" />
+      <!--Índia-->
+      <xsd:enumeration value="365" />
+      <!--Indonésia-->
+      <xsd:enumeration value="369" />
+      <!--Iraque-->
+      <xsd:enumeration value="372" />
+      <!--Irã-->
+      <xsd:enumeration value="375" />
+      <!--Irlanda-->
+      <xsd:enumeration value="379" />
+      <!--Islândia-->
+      <xsd:enumeration value="383" />
+      <!--Israel-->
+      <xsd:enumeration value="386" />
+      <!--Itália-->
+      <xsd:enumeration value="391" />
+      <!--Jamaica-->
+      <xsd:enumeration value="396" />
+      <!--Johnston, Ilhas-->
+      <xsd:enumeration value="399" />
+      <!--Japão-->
+      <xsd:enumeration value="403" />
+      <!--Jordânia-->
+      <xsd:enumeration value="411" />
+      <!--Kiribati-->
+      <xsd:enumeration value="420" />
+      <!--Laos-->
+      <xsd:enumeration value="423" />
+      <!--Lebuan, Ilhas-->
+      <xsd:enumeration value="426" />
+      <!--Lesoto-->
+      <xsd:enumeration value="427" />
+      <!--Letônia-->
+      <xsd:enumeration value="431" />
+      <!--Líbano-->
+      <xsd:enumeration value="434" />
+      <!--Libéria-->
+      <xsd:enumeration value="438" />
+      <!--Líbia-->
+      <xsd:enumeration value="440" />
+      <!--Liechtenstein-->
+      <xsd:enumeration value="442" />
+      <!--Lituânia-->
+      <xsd:enumeration value="445" />
+      <!--Luxemburgo-->
+      <xsd:enumeration value="447" />
+      <!--Macau-->
+      <xsd:enumeration value="449" />
+      <!--Macedônia-->
+      <xsd:enumeration value="450" />
+      <!--Madagascar-->
+      <xsd:enumeration value="452" />
+      <!--Madeira, Ilha da-->
+      <xsd:enumeration value="455" />
+      <!--Malásia-->
+      <xsd:enumeration value="458" />
+      <!--Malavi-->
+      <xsd:enumeration value="461" />
+      <!--Maldivas-->
+      <xsd:enumeration value="464" />
+      <!--Mali-->
+      <xsd:enumeration value="467" />
+      <!--Malta-->
+      <xsd:enumeration value="472" />
+      <!--Marianas do Norte-->
+      <xsd:enumeration value="474" />
+      <!--Marrocos-->
+      <xsd:enumeration value="476" />
+      <!--Marshall, Ilhas-->
+      <xsd:enumeration value="477" />
+      <!--Martinica-->
+      <xsd:enumeration value="485" />
+      <!--Maurício-->
+      <xsd:enumeration value="488" />
+      <!--Mauritânia-->
+      <xsd:enumeration value="490" />
+      <!--Midway, Ilhas-->
+      <xsd:enumeration value="493" />
+      <!--México-->
+      <xsd:enumeration value="494" />
+      <!--Moldávia-->
+      <xsd:enumeration value="495" />
+      <!--Mônaco-->
+      <xsd:enumeration value="497" />
+      <!--Mongólia-->
+      <xsd:enumeration value="498" />
+      <!--Montenegro-->
+      <xsd:enumeration value="499" />
+      <!--Micronésia-->
+      <xsd:enumeration value="501" />
+      <!--Montserrat, Ilhas-->
+      <xsd:enumeration value="505" />
+      <!--Moçambique-->
+      <xsd:enumeration value="507" />
+      <!--Namíbia-->
+      <xsd:enumeration value="508" />
+      <!--Nauru-->
+      <xsd:enumeration value="511" />
+      <!--Christmas,Ilha (Navidad)-->
+      <xsd:enumeration value="517" />
+      <!--Nepal-->
+      <xsd:enumeration value="521" />
+      <!--Nicarágua-->
+      <xsd:enumeration value="525" />
+      <!--Niger-->
+      <xsd:enumeration value="528" />
+      <!--Nigéria-->
+      <xsd:enumeration value="531" />
+      <!--Niue,Ilha-->
+      <xsd:enumeration value="535" />
+      <!--Norfolk,Ilha-->
+      <xsd:enumeration value="538" />
+      <!--Noruega-->
+      <xsd:enumeration value="542" />
+      <!--Nova Caledônia-->
+      <xsd:enumeration value="545" />
+      <!--Papua Nova Guiné-->
+      <xsd:enumeration value="548" />
+      <!--Nova Zelândia-->
+      <xsd:enumeration value="551" />
+      <!--Vanuatu-->
+      <xsd:enumeration value="556" />
+      <!--Omã-->
+      <xsd:enumeration value="566" />
+      <!--Pacífico, Ilhas do-->
+      <xsd:enumeration value="573" />
+      <!--Holanda (Países Baixos)-->
+      <xsd:enumeration value="575" />
+      <!--Palau-->
+      <xsd:enumeration value="576" />
+      <!--Paquistão-->
+      <xsd:enumeration value="580" />
+      <!--Panamá-->
+      <xsd:enumeration value="586" />
+      <!--Paraguai-->
+      <xsd:enumeration value="589" />
+      <!--Peru-->
+      <xsd:enumeration value="593" />
+      <!--Pitcairn, Ilha-->
+      <xsd:enumeration value="599" />
+      <!--Polinésia Francesa-->
+      <xsd:enumeration value="603" />
+      <!--Polônia-->
+      <xsd:enumeration value="607" />
+      <!--Portugal-->
+      <xsd:enumeration value="611" />
+      <!--Porto Rico-->
+      <xsd:enumeration value="623" />
+      <!--Quênia-->
+      <xsd:enumeration value="625" />
+      <!--Quirguiz, República-->
+      <xsd:enumeration value="628" />
+      <!--Reino Unido-->
+      <xsd:enumeration value="640" />
+      <!--República Centro-Africana-->
+      <xsd:enumeration value="647" />
+      <!--República Dominicana-->
+      <xsd:enumeration value="660" />
+      <!--Reunião, Ilha-->
+      <xsd:enumeration value="665" />
+      <!--Zimbábue-->
+      <xsd:enumeration value="670" />
+      <!--Romênia-->
+      <xsd:enumeration value="675" />
+      <!--Ruanda-->
+      <xsd:enumeration value="676" />
+      <!--Rússia-->
+      <xsd:enumeration value="677" />
+      <!--Salomão, Ilhas-->
+      <xsd:enumeration value="685" />
+      <!--Saara Ocidental-->
+      <xsd:enumeration value="687" />
+      <!--El Salvador-->
+      <xsd:enumeration value="690" />
+      <!--Samoa-->
+      <xsd:enumeration value="691" />
+      <!--Samoa Americana-->
+      <xsd:enumeration value="695" />
+      <!--São Cristóvão e Neves, Ilhas-->
+      <xsd:enumeration value="697" />
+      <!--San Marino-->
+      <xsd:enumeration value="700" />
+      <!--São Pedro e Miquelon-->
+      <xsd:enumeration value="705" />
+      <!--São Vicente e Granadinas-->
+      <xsd:enumeration value="710" />
+      <!--Santa Helena-->
+      <xsd:enumeration value="715" />
+      <!--Santa Lúcia-->
+      <xsd:enumeration value="720" />
+      <!--São Tomé e Príncipe, Ilhas-->
+      <xsd:enumeration value="728" />
+      <!--Senegal-->
+      <xsd:enumeration value="731" />
+      <!--Seychelles-->
+      <xsd:enumeration value="735" />
+      <!--Serra Leoa-->
+      <xsd:enumeration value="737" />
+      <!--Sérvia-->
+      <xsd:enumeration value="741" />
+      <!--Cingapura-->
+      <xsd:enumeration value="744" />
+      <!--Síria-->
+      <xsd:enumeration value="748" />
+      <!--Somália-->
+      <xsd:enumeration value="750" />
+      <!--Sri Lanka-->
+      <xsd:enumeration value="754" />
+      <!--Suazilândia-->
+      <xsd:enumeration value="756" />
+      <!--África do Sul-->
+      <xsd:enumeration value="759" />
+      <!--Sudão-->
+      <xsd:enumeration value="764" />
+      <!--Suécia-->
+      <xsd:enumeration value="767" />
+      <!--Suíça-->
+      <xsd:enumeration value="770" />
+      <!--Suriname-->
+      <xsd:enumeration value="772" />
+      <!--Tadjiquistão-->
+      <xsd:enumeration value="776" />
+      <!--Tailândia-->
+      <xsd:enumeration value="780" />
+      <!--Tanzânia-->
+      <xsd:enumeration value="782" />
+      <!--Território Brit.Oc.Indico-->
+      <xsd:enumeration value="783" />
+      <!--Djibuti-->
+      <xsd:enumeration value="788" />
+      <!--Chade-->
+      <xsd:enumeration value="791" />
+      <!--Tcheca, República-->
+      <xsd:enumeration value="795" />
+      <!--Timor Leste-->
+      <xsd:enumeration value="800" />
+      <!--Togo-->
+      <xsd:enumeration value="805" />
+      <!--Toquelau,Ilhas-->
+      <xsd:enumeration value="810" />
+      <!--Tonga-->
+      <xsd:enumeration value="815" />
+      <!--Trinidad e Tobago-->
+      <xsd:enumeration value="820" />
+      <!--Tunísia-->
+      <xsd:enumeration value="823" />
+      <!--Turcas e Caicos, Ilhas-->
+      <xsd:enumeration value="824" />
+      <!--Turcomenistão-->
+      <xsd:enumeration value="827" />
+      <!--Turquia-->
+      <xsd:enumeration value="828" />
+      <!--Tuvalu-->
+      <xsd:enumeration value="831" />
+      <!--Ucrânia-->
+      <xsd:enumeration value="833" />
+      <!--Uganda-->
+      <xsd:enumeration value="845" />
+      <!--Uruguai-->
+      <xsd:enumeration value="847" />
+      <!--Uzbequistão-->
+      <xsd:enumeration value="848" />
+      <!--Vaticano, Estado Cidade-->
+      <xsd:enumeration value="850" />
+      <!--Venezuela-->
+      <xsd:enumeration value="858" />
+      <!--Vietnã-->
+      <xsd:enumeration value="863" />
+      <!--Virgens, Ilhas (Britânicas)-->
+      <xsd:enumeration value="866" />
+      <!--Virgens,Ilhas (E.U.A.)-->
+      <xsd:enumeration value="870" />
+      <!--Fiji-->
+      <xsd:enumeration value="873" />
+      <!--Wake, Ilha-->
+      <xsd:enumeration value="875" />
+      <!--Wallis e Futuna, Ilhas-->
+      <xsd:enumeration value="888" />
+      <!--Congo-->
+      <xsd:enumeration value="890" />
+      <!--Zambia-->
+      <xsd:enumeration value="990" />
+      <!--Provisão de navios e aeronaves-->
+      <xsd:enumeration value="995" />
+      <!--Bancos Centrais-->
+      <xsd:enumeration value="997" />
+      <!--Organizações Internacionais-->
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- Enumeração para o tipo de Tráfego da Agência Joint Venture. -->
+  <xsd:simpleType name="tipoTrafegoJointVentureEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="IMPORTACAO" />
+      <!-- IMPORTAÇÃO -->
+      <xsd:enumeration value="EXPORTACAO" />
+      <!-- EXPORTAÇÃO -->
+      <xsd:enumeration value="IMPORTACAO_EXPORTACAO" />
+      <!-- IMPORTAÇÃO/EXPORTAÇÃO -->
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- tipoGRUEnum. -->
+  <xsd:simpleType name="tipoGRUEnum">
+    <xsd:restriction base="xsd:string">
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+</xsd:schema>
